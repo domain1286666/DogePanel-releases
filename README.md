@@ -39,6 +39,14 @@ bash quick_start.sh --decrypt aapanel-export-linux-amd64.enc
 
 Release 页面上 GitHub 自动附带的 “Source code (zip/tar.gz)” 是这个仓库本身（只有说明文件），不是 DogePanel 的源码；DogePanel 的源码是 `dogepanel-<版本>-source.tar.gz.enc`。
 
+## 软件的二进制包
+
+`software-<日期>` 这些 Release 不是面板的版本，放的是面板“软件”页面二进制安装用的包（OpenResty、PHP、Redis、Valkey），不加密。面板安装时自己下载，并核对编进面板里的 SHA-256。
+
+- 每个包里的 `.dgp/` 有编它的脚本和源码里的许可文件。
+- 同一个 Release 里有编这些包用的上游源码包（原样）。Redis 8 按 AGPLv3 提供，对应的源码就是那里的 `redis-<版本>.tar.gz`。
+- `manifest.json`、`manifest.json.sig` 是所有文件的 SHA-256 和签名。
+
 ---
 
 # DogePanel releases
@@ -60,3 +68,5 @@ bash quick_start.sh
 - Every file is checked against the signed manifest before it is decrypted; this needs OpenSSL 3.0 or newer.
 
 The "Source code" archives that GitHub adds to every release contain this repository only, not the source code of DogePanel.
+
+The `software-<date>` releases are not versions of the panel: they hold the binary packages that its Software page installs (OpenResty, PHP, Redis, Valkey), not encrypted, which the panel checks against the SHA-256 built into it. `.dgp/` in each package has the scripts it was built with and the license files of its source; the source archives of upstream are in the same release (Redis 8 is distributed under AGPLv3: its source is the `redis-<version>.tar.gz` there).
