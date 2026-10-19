@@ -57,7 +57,9 @@ curl -fsSLO https://github.com/domain1286666/DogePanel-releases/releases/latest/
 
 ## 升级
 
-再运行一次安装命令就行，同样要输入安装密码：
+从 v2.3.2-dp.4 起，面板有新版本时会在右下角提示，点“立即更新”就会自动下载、校验、安装并重启，安装密码装面板时已经记下了。升级完重新登录即可。
+
+也可以再运行一次安装命令，同样要输入安装密码（v2.3.2-dp.3 及更早的版本只能这样升级）：
 
 ```bash
 curl -fsSLO https://github.com/domain1286666/DogePanel-releases/releases/latest/download/quick_start.sh && bash quick_start.sh
@@ -203,7 +205,7 @@ Type the installation password when asked; it is not shown as you type. Nothing 
 
 Open the address in a browser with the public IP of the server. In a cloud, first allow the port of the address (TCP) in the security group. Sign in with the user name and password, after ticking the license agreement under the button.
 
-- Upgrade: run the same command again. The current version is backed up first and comes back if the new one does not start.
+- Upgrade: from v2.3.2-dp.4 on, the panel tells about a new version and upgrades itself with one click (the installation password is kept from the installation); or run the same command again. The current version is backed up first and comes back if the new one does not start.
 - `dgpctl user-info` shows the address and user name; `dgpctl update password` sets a new password; `dgpctl uninstall` uninstalls.
 - `--interactive` asks for the port, user name, password and Docker. `--skip-docker` installs no Docker: only the app store and containers need it, websites and databases do not. If Docker cannot be installed, the panel is installed all the same; on systems that Docker no longer supports, such as Ubuntu 20.04, `apt install -y docker.io` installs the Docker of the system.
 - Offline, or with OpenSSL older than 1.1.1 (CentOS 7): on another machine, decrypt the package with `bash quick_start.sh --decrypt 1panel-<version>-linux-amd64.tar.gz.enc`, copy the `.tar.gz` and `quick_start.sh` to the server, and run `bash quick_start.sh --package ./1panel-<version>-linux-amd64.tar.gz`.
