@@ -81,7 +81,7 @@ curl -fsSLO https://github.com/nickdodo1088/DogePanel-releases/releases/latest/d
 
 **Docker 没装上**
 
-面板照样能用：网站、数据库和装到本机的软件都不用 Docker，只有容器应用和容器要用。按 [Docker 的安装说明](https://docs.docker.com/engine/install/) 装好 Docker 以后，就都能用了。Ubuntu 20.04 这类已经停止支持的系统，Docker 不再提供安装包，可以运行 `apt install -y docker.io` 装系统自带的 Docker。
+面板照样能用：网站、数据库和装到本机的软件都不用 Docker，只有容器应用和容器要用。要用的时候在面板里装：应用商店顶上的“安装 Docker”，或者“容器”页面上的“安装 Docker”，用的是和安装时同一个 Docker 安装脚本，可以选软件源（v2.3.2-dp.24 起）。也可以按 [Docker 的安装说明](https://docs.docker.com/engine/install/) 自己装。Ubuntu 20.04 这类已经停止支持的系统，Docker 不再提供安装包，可以运行 `apt install -y docker.io` 装系统自带的 Docker。
 
 **不想装 Docker**
 
@@ -207,7 +207,7 @@ Open the address in a browser with the public IP of the server. In a cloud, firs
 
 - Upgrade: from v2.3.2-dp.4 on, the panel tells about a new version and upgrades itself with one click (the installation password is kept from the installation); or run the same command again. The current version is backed up first and comes back if the new one does not start.
 - `dgpctl user-info` shows the address and user name; `dgpctl update password` sets a new password; `dgpctl uninstall` uninstalls.
-- `--interactive` asks for the port, user name, password and Docker. `--skip-docker` installs no Docker: only container apps and containers need it; websites, databases and the software installed on the host do not. If Docker cannot be installed, the panel is installed all the same; on systems that Docker no longer supports, such as Ubuntu 20.04, `apt install -y docker.io` installs the Docker of the system.
+- `--interactive` asks for the port, user name, password and Docker. `--skip-docker` installs no Docker: only container apps and containers need it; websites, databases and the software installed on the host do not. If Docker cannot be installed, the panel is installed all the same, and from v2.3.2-dp.24 it installs Docker itself ("Install Docker" in the app store or on the container pages, with the same install script); on systems that Docker no longer supports, such as Ubuntu 20.04, `apt install -y docker.io` installs the Docker of the system.
 - Offline, or with OpenSSL older than 1.1.1 (CentOS 7): on another machine, decrypt the package with `bash quick_start.sh --decrypt 1panel-<version>-linux-amd64.tar.gz.enc`, copy the `.tar.gz` and `quick_start.sh` to the server, and run `bash quick_start.sh --package ./1panel-<version>-linux-amd64.tar.gz`.
 
 Every file is checked before it is decrypted or installed: `quick_start.sh` has the SHA-256 of all files of its release built in, and each release has a signed manifest (`manifest.json`, `manifest.json.sig`) for other versions, which needs OpenSSL 3.0. Nothing is reported anywhere, and no other script is downloaded.
