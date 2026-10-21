@@ -15,7 +15,7 @@ English: see [below](#dogepanel-english).
 **第 1 步**：复制下面这一行，粘贴到服务器的终端里，按回车。
 
 ```bash
-curl -fsSLO https://github.com/domain1286666/DogePanel-releases/releases/latest/download/quick_start.sh && bash quick_start.sh
+curl -fsSLO https://github.com/nickdodo1088/DogePanel-releases/releases/latest/download/quick_start.sh && bash quick_start.sh
 ```
 
 **第 2 步**：看到“请输入安装密码”时，输入维护者给你的密码，按回车。输入时屏幕上什么都不显示，这是正常的。
@@ -62,7 +62,7 @@ curl -fsSLO https://github.com/domain1286666/DogePanel-releases/releases/latest/
 也可以再运行一次安装命令，同样要输入安装密码（v2.3.2-dp.3 及更早的版本只能这样升级）：
 
 ```bash
-curl -fsSLO https://github.com/domain1286666/DogePanel-releases/releases/latest/download/quick_start.sh && bash quick_start.sh
+curl -fsSLO https://github.com/nickdodo1088/DogePanel-releases/releases/latest/download/quick_start.sh && bash quick_start.sh
 ```
 
 升级前会自动备份，新版本启动不了时会自动换回原来的版本。网站和数据不受影响。
@@ -123,7 +123,7 @@ curl -fsSLO https://github.com/domain1286666/DogePanel-releases/releases/latest/
 
 服务器不能访问 GitHub，或者 OpenSSL 低于 1.1.1（比如 CentOS 7）时：
 
-1. 在一台能上网的 Linux 机器上（OpenSSL 1.1.1 以上，不需要 root），从[发布页](https://github.com/domain1286666/DogePanel-releases/releases/latest)下载 `quick_start.sh` 和 `1panel-<版本>-linux-amd64.tar.gz.enc`（ARM 服务器下载 `arm64` 的），放在同一个目录，解密：
+1. 在一台能上网的 Linux 机器上（OpenSSL 1.1.1 以上，不需要 root），从[发布页](https://github.com/nickdodo1088/DogePanel-releases/releases/latest)下载 `quick_start.sh` 和 `1panel-<版本>-linux-amd64.tar.gz.enc`（ARM 服务器下载 `arm64` 的），放在同一个目录，解密：
 
    ```bash
    bash quick_start.sh --decrypt 1panel-<版本>-linux-amd64.tar.gz.enc
@@ -198,7 +198,7 @@ DogePanel is a web panel for Linux servers, based on [1Panel](https://github.com
 You need a 64-bit Linux server (a fresh Debian 12, Ubuntu 22.04 / 24.04, Rocky Linux 9 or AlmaLinux 9 is best), root (`sudo -i`), and the installation password from the maintainer. Run:
 
 ```bash
-curl -fsSLO https://github.com/domain1286666/DogePanel-releases/releases/latest/download/quick_start.sh && bash quick_start.sh
+curl -fsSLO https://github.com/nickdodo1088/DogePanel-releases/releases/latest/download/quick_start.sh && bash quick_start.sh
 ```
 
 Type the installation password when asked; it is not shown as you type. Nothing else is asked. At the end, the address, user name and password of the panel are shown, the password only this once: write them down.
