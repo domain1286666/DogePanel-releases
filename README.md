@@ -37,11 +37,11 @@ curl -fsSLO https://github.com/nickdodo1088/DogePanel-releases/releases/latest/d
 
 1. 把访问地址里的 IP 换成服务器的**公网 IP**（在云服务商的控制台里能看到），在浏览器里打开。地址最后那一段不能少。
 2. 打不开的话，多半是云服务商的**安全组**没有放行：在控制台里放行访问地址里的端口（TCP），再试一次。
-3. 输入用户名和密码，勾选下面的“同意《飞致云社区软件许可协议》”，点“登录”。
+3. 输入用户名和密码，点“登录”。
 
 登录以后：
 
-- 在“软件”页面装好 OpenResty 和 PHP，就可以建网站了；
+- 在“应用商店”里把 OpenResty 和 PHP 装到本机，就可以建网站了；
 - 建议在“面板设置 → 安全”里开启两步验证和 HTTPS。
 
 ## 忘了地址或密码
@@ -77,11 +77,11 @@ curl -fsSLO https://github.com/nickdodo1088/DogePanel-releases/releases/latest/d
 
 - 安装文件在 GitHub 上，国内有时下载慢或者中断，再运行一次安装命令就行。
 - 服务器的时区是中国时，Docker 会自动从阿里云的镜像安装。
-- 使用应用商店之前，先在“容器 → 配置”里设置“镜像加速”，不然可能拉不到 Docker 镜像。
+- 用应用商店的容器应用之前，先在“容器 → 配置”里设置“镜像加速”，不然可能拉不到 Docker 镜像。
 
 **Docker 没装上**
 
-面板照样能用：网站、数据库和软件页面都不用 Docker，只有应用商店和容器要用。按 [Docker 的安装说明](https://docs.docker.com/engine/install/) 装好 Docker 以后，就都能用了。Ubuntu 20.04 这类已经停止支持的系统，Docker 不再提供安装包，可以运行 `apt install -y docker.io` 装系统自带的 Docker。
+面板照样能用：网站、数据库和装到本机的软件都不用 Docker，只有容器应用和容器要用。按 [Docker 的安装说明](https://docs.docker.com/engine/install/) 装好 Docker 以后，就都能用了。Ubuntu 20.04 这类已经停止支持的系统，Docker 不再提供安装包，可以运行 `apt install -y docker.io` 装系统自带的 Docker。
 
 **不想装 Docker**
 
@@ -177,7 +177,7 @@ Release 页面上 GitHub 自动附带的 “Source code (zip/tar.gz)” 是这�
 
 ### 软件的二进制包
 
-`software-<日期>` 这些 Release 不是面板的版本，放的是面板“软件”页面二进制安装用的包（OpenResty、PHP、Redis、Valkey），不加密。面板安装时自己下载，并核对编进面板里的 SHA-256。
+`software-<日期>` 这些 Release 不是面板的版本，放的是面板把软件装到本机时用的二进制包（OpenResty、PHP、Redis、Valkey），不加密。面板安装时自己下载，并核对编进面板里的 SHA-256。
 
 - 每个包里的 `.dgp/` 有编它的脚本和源码里的许可文件。
 - 同一个 Release 里有编这些包用的上游源码包（原样）。Redis 8 按 AGPLv3 提供，对应的源码就是那里的 `redis-<版本>.tar.gz`。
@@ -203,11 +203,11 @@ curl -fsSLO https://github.com/nickdodo1088/DogePanel-releases/releases/latest/d
 
 Type the installation password when asked; it is not shown as you type. Nothing else is asked. At the end, the address, user name and password of the panel are shown, the password only this once: write them down.
 
-Open the address in a browser with the public IP of the server. In a cloud, first allow the port of the address (TCP) in the security group. Sign in with the user name and password, after ticking the license agreement under the button.
+Open the address in a browser with the public IP of the server. In a cloud, first allow the port of the address (TCP) in the security group. Sign in with the user name and password.
 
 - Upgrade: from v2.3.2-dp.4 on, the panel tells about a new version and upgrades itself with one click (the installation password is kept from the installation); or run the same command again. The current version is backed up first and comes back if the new one does not start.
 - `dgpctl user-info` shows the address and user name; `dgpctl update password` sets a new password; `dgpctl uninstall` uninstalls.
-- `--interactive` asks for the port, user name, password and Docker. `--skip-docker` installs no Docker: only the app store and containers need it, websites and databases do not. If Docker cannot be installed, the panel is installed all the same; on systems that Docker no longer supports, such as Ubuntu 20.04, `apt install -y docker.io` installs the Docker of the system.
+- `--interactive` asks for the port, user name, password and Docker. `--skip-docker` installs no Docker: only container apps and containers need it; websites, databases and the software installed on the host do not. If Docker cannot be installed, the panel is installed all the same; on systems that Docker no longer supports, such as Ubuntu 20.04, `apt install -y docker.io` installs the Docker of the system.
 - Offline, or with OpenSSL older than 1.1.1 (CentOS 7): on another machine, decrypt the package with `bash quick_start.sh --decrypt 1panel-<version>-linux-amd64.tar.gz.enc`, copy the `.tar.gz` and `quick_start.sh` to the server, and run `bash quick_start.sh --package ./1panel-<version>-linux-amd64.tar.gz`.
 
 Every file is checked before it is decrypted or installed: `quick_start.sh` has the SHA-256 of all files of its release built in, and each release has a signed manifest (`manifest.json`, `manifest.json.sig`) for other versions, which needs OpenSSL 3.0. Nothing is reported anywhere, and no other script is downloaded.
